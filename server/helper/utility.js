@@ -10,36 +10,44 @@ const {
     ForbiddenError
 } = errorModule;
 
-export const successBody = async(obj) => {
+export const successBody = (obj) => {
   return {
     status: 1,
     code: ErrorCodes.ERR_NONE,
-    message: "success",
-    ...obj,
+    message: obj.message || "success",
+    data: {
+      ...obj,
+    }
   };
 };
 
-export const errorBody = async(err, obj = {}) => {
+export const errorBody = (err, obj = {}) => {
   if (err instanceof ApplicationError) {
     return {
       status: 0,
       code: err.code,
       message: err.message,
-      ...obj,
+      data: {
+        ...obj,
+      }
     };
   } else if (err instanceof Error) {
     return {
       status: 0,
       code: ErrorCodes.ERR_BAD_REQUEST,
       message: err.message,
-      ...obj,
+      data: {
+        ...obj,
+      }
     };
   } else {
     return {
       status: 0,
       code: ErrorCodes.ERR_BAD_REQUEST,
       message: err,
-      ...obj,
+      data: {
+        ...obj,
+      }
     };
   }
 };

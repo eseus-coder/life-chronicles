@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import moment_tz from "moment_timezone";
+import moment_tz from "moment-timezone";
 import { store } from "../../redux/store";
 const baseUrl = process.env.REACT_APP_BASEURL;
 

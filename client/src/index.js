@@ -1,7 +1,12 @@
-import React from 'react';
-import ReactDom from 'react-dom';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import App from "./App";
 
-import App from './App';
-
-//Connecting the div with an id of root 
-ReactDom.render(<App />, document.getElementById('root'));
+//Connecting the div with an id of root
+createRoot(document.getElementById('root')).render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+);
