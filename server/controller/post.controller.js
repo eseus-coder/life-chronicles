@@ -11,7 +11,7 @@ const {
     ForbiddenError
 } = errorModule;
 
-export const getPosts = async (req, res) => {
+export const getPosts = async () => {
     try {
         const postsData = await PostModel.find();
         return postsData;
@@ -30,7 +30,9 @@ export const createPost = async (req, res) => {
 
         await newPost.save();
 
-        return newPost;
+        let updatedAllPosts = await getPosts();
+
+        return updatedAllPosts;
 
     } catch (error) {
         throw new InternalError("Error in createPost: ", error.message);

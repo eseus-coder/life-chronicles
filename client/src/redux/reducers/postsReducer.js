@@ -1,7 +1,7 @@
 import postsTypes from "../types/postsTypes";
 
 const INITIAL_STATE = {
-    getAllPostsData: {},
+    getAllPostsData: [],
 };
 
 const postsReducer = (state = INITIAL_STATE, action) => {

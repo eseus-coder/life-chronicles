@@ -9,7 +9,7 @@ import { successBody, errorBody } from '../../../helper/utility.js';
 
 router.get('/getPosts', async (req, res, next) => {
     try {
-        const response = await getPosts(req, res);
+        const response = await getPosts();
         res.send(successBody({
             response,
             message: 'Fetched all posts successfully!'
@@ -23,7 +23,10 @@ router.get('/getPosts', async (req, res, next) => {
 router.post('/createPost', async (req, res, next) => {
     try {
         const response = await createPost(req, res);
-        res.send(response);
+        res.send(successBody({
+            response,
+            message: 'Post Created Successfully!'
+        }));
     } catch (error) {
         console.error(error);
         next(error);
